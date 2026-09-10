@@ -37,6 +37,8 @@ basic.forever(function () {
             if (input.buttonIsPressed(Button.A)) {
                 player_number += -1
                 basic.showNumber(player_number)
+            } else {
+                continue;
             }
         }
     }
