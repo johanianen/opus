@@ -1,11 +1,8 @@
-let player_number = 0
-let dice_number = 0
-let send_number = 0
 input.onButtonPressed(Button.A, function () {
-    player_number += 1
+	
 })
-input.onButtonPressed(Button.B, function () {
-    player_number += -1
+input.onButtonPressed(Button.AB, function () {
+    player = player_number
 })
 input.onGesture(Gesture.Shake, function () {
     dice_number = randint(1, 6)
@@ -14,8 +11,36 @@ input.onGesture(Gesture.Shake, function () {
         send_number = dice_number
     }
 })
+let send_number = 0
+let dice_number = 0
+let player = 0
+let player_number = 0
+player_number = 1
+player = 0
 basic.forever(function () {
-    basic.showNumber(player_number)
-    basic.pause(5000)
-    basic.showString("Goodbye!")
+    if (input.buttonIsPressed(Button.A)) {
+        if (player == 0) {
+            basic.clearScreen()
+            player_number += 1
+            if (player_number > 7) {
+                player_number = 1
+            }
+        } else {
+        	
+        }
+    }
+})
+basic.forever(function () {
+    if (input.buttonIsPressed(Button.B)) {
+        if (player == 0) {
+            basic.clearScreen()
+            basic.showNumber(player_number)
+            player_number += -1
+            if (player_number < 1) {
+                player_number = 7
+            }
+        } else {
+        	
+        }
+    }
 })
