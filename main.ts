@@ -1,46 +1,43 @@
-input.onButtonPressed(Button.A, function () {
-    basic.showString("\"Hej Marcus\"")
-})
 input.onButtonPressed(Button.AB, function () {
     player = player_number
+    in_setup = 0
+    for (let index = 0; index < 4; index++) {
+        basic.showIcon(IconNames.Square)
+        basic.pause(100)
+        basic.showNumber(player)
+        basic.pause(100)
+    }
+    has_dice_1 = 1
 })
 input.onGesture(Gesture.Shake, function () {
-    dice_number = randint(1, 6)
-    basic.showNumber(dice_number)
-    if (dice_number == 1 || dice_number == 6) {
-        send_number = dice_number
+    let has_dice_2 = 0
+    if (has_dice_1 || has_dice_2) {
+        dice_number = randint(1, 6)
+        basic.showNumber(dice_number)
+        if (dice_number == 1 || dice_number == 6) {
+            send_number = dice_number
+        }
     }
 })
 let send_number = 0
 let dice_number = 0
+let has_dice_1 = 0
+let in_setup = 0
 let player = 0
 let player_number = 0
-player_number = 1
+player_number = 0
 player = 0
+in_setup = 1
 basic.forever(function () {
-    if (input.buttonIsPressed(Button.A)) {
-        if (player == 0) {
-            basic.clearScreen()
+    while (in_setup) {
+        if (input.buttonIsPressed(Button.B)) {
             player_number += 1
-            if (player_number > 7) {
-                player_number = 1
-            }
-        } else {
-        	
-        }
-    }
-})
-basic.forever(function () {
-    if (input.buttonIsPressed(Button.B)) {
-        if (player == 0) {
-            basic.clearScreen()
             basic.showNumber(player_number)
-            player_number += -1
-            if (player_number < 1) {
-                player_number = 7
-            }
         } else {
-        	
+            if (input.buttonIsPressed(Button.A)) {
+                player_number += -1
+                basic.showNumber(player_number)
+            }
         }
     }
 })
