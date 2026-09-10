@@ -8,6 +8,7 @@ input.onGesture(Gesture.Shake, function () {
         }
     }
 })
+let in_game = 0
 let send_number = 0
 let dice_number = 0
 let has_dice_1 = 0
@@ -19,14 +20,15 @@ basic.forever(function () {
     while (in_setup) {
         if (input.buttonIsPressed(Button.AB)) {
             player = player_number
-            in_setup = 0
-            for (let index = 0; index < 4; index++) {
+            for (let index = 0; index < 2; index++) {
                 basic.showIcon(IconNames.Square)
                 basic.pause(100)
                 basic.showNumber(player)
                 basic.pause(100)
             }
             has_dice_1 = 1
+            in_setup = 0
+            in_game = 1
         } else if (input.buttonIsPressed(Button.B)) {
             player_number += 1
             if (player_number > 7) {
