@@ -17,4 +17,5 @@ let player_number = 0
 basic.forever(function () {
     basic.showNumber(player_number)
     basic.pause(5000)
+    basic.showString("Hello!")
 })
