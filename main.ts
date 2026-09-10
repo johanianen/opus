@@ -1,5 +1,5 @@
 input.onButtonPressed(Button.A, function () {
-	
+    basic.showString("\"Hej Marcus\"")
 })
 input.onButtonPressed(Button.AB, function () {
     player = player_number
