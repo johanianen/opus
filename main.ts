@@ -1,3 +1,6 @@
+let player_number = 0
+let dice_number = 0
+let send_number = 0
 input.onButtonPressed(Button.A, function () {
     player_number += 1
 })
@@ -11,11 +14,8 @@ input.onGesture(Gesture.Shake, function () {
         send_number = dice_number
     }
 })
-let send_number = 0
-let dice_number = 0
-let player_number = 0
 basic.forever(function () {
     basic.showNumber(player_number)
     basic.pause(5000)
-    basic.showString("Hello!")
+    basic.showString("Goodbye!")
 })
